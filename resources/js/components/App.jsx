@@ -1,17 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import Ticket from './Ticket';
 
-function App(props) {   
+/* React.useEffect(()=>{
+        async function fetchData() {
+            setData(Object.entries(data));
+        };
+        fetchData();
+    }, []);
+*/
+function App(props) {
     return (
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-md-8">
-                    <div className="card">
-                        <div className="card-header">{props.title}</div>
-
-                        <div className="card-body">I'm an example component!</div>
-                    </div>
-                </div>
+        <div className="App">
+            <div className="wrapper">
+                {Object.values(props).map((item, index) => (
+                <Ticket
+                    key={props.id}
+                    {...item}
+                />))
+                }
             </div>
         </div>
     );
@@ -21,8 +28,9 @@ export default App;
 
 if (document.getElementById('root')) {
     const element = document.getElementById('root')
-    const props = Object.assign({}, (element.dataset)).main;
-    //props => json($array)
+    const props = element.getAttribute('props');
+    console.log(props);
+    const decodeProps = JSON.parse(props)
     const root = ReactDOM.createRoot(element);
-    root.render(<App {...props} />);
+    root.render(<App {...decodeProps} />);
 }
