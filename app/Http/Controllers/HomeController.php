@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,9 +15,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $props = [
-            'title' => 'Hello World',
-        ];
+        $props = Event::with('routes')->get()->toArray();
         return view('home', compact('props'));
     }
 }

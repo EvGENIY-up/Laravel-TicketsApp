@@ -1,5 +1,4 @@
 @extends('layouts/app')
-
 @section('body')
-    <div id="root" data-main={{ json_encode($props) }}></div>
+    <div id="root" props='{{ json_encode($props) }}'></div>
 @endsection
