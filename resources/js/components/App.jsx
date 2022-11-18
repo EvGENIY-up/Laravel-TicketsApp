@@ -2,20 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Ticket from './Ticket';
 
-/* React.useEffect(()=>{
-        async function fetchData() {
-            setData(Object.entries(data));
-        };
-        fetchData();
-    }, []);
-*/
 function App(props) {
+    console.log(Object.values(props))
     return (
         <div className="App">
             <div className="wrapper">
                 {Object.values(props).map((item, index) => (
                 <Ticket
-                    key={props.id}
+                    key={item.id}
                     {...item}
                 />))
                 }

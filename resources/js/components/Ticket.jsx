@@ -1,9 +1,10 @@
 import React from "react";
+import Modal from "./Modal";
 
 
 function Ticket({ id, title, description, adult_price, pier_price, routes, kid_price }) {
 
-  //const [modalOpened, setModalOpened] = React.useState(false);
+  const [modalOpened, setModalOpened] = React.useState(false);
   const [filteredDates, setFilteredDates] = React.useState([]);
   const [nextDates, setNextDates] = React.useState(routes);
   
@@ -18,7 +19,6 @@ function Ticket({ id, title, description, adult_price, pier_price, routes, kid_p
     setFilteredDates(filtered);
     setNextDates(prev=> prev.slice(3))
   }
-
 
     return (
         <div className="ticket">
@@ -65,7 +65,7 @@ function Ticket({ id, title, description, adult_price, pier_price, routes, kid_p
               <button onClick={()=> setModalOpened(true)} className="more-button cu-p">Подробнее</button>
             </div>
           </div>
-        {/*modalOpened ? <Modal id={id} setModalOpened={setModalOpened} description={description}  title={title} adult_price={adult_price} kid_price={kid_price} dates={dates}  /> : null*/}
+        {modalOpened ? <Modal id={id} setModalOpened={setModalOpened} description={description}  title={title} adult_price={adult_price} kid_price={kid_price} routes={routes}  /> : null}
         </div>
     )
 }

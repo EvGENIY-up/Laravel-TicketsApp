@@ -14,4 +14,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::post('/order', [App\Http\Controllers\HomeController::class, 'takeOrder'])->name('order.create');
+Route::post('/order', [App\Http\Controllers\HomeController::class, 'store'])->name('order.create');
