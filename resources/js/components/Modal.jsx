@@ -53,7 +53,7 @@ function Modal({ id, setModalOpened, title, description, routes, adult_price, ki
             alert('Максимальное кол-ва детских билетов равно 20')
             return;
         }
-        if (requestBody['event_date_forward'] > requestBody['event_date_back'] ) {
+        if (requestBody['route_id'] > requestBody['ticket_kid_quanity'] ) {
             alert('Время отплытия не может быть больше времени прибытия')
             return;
         }
@@ -62,8 +62,7 @@ function Modal({ id, setModalOpened, title, description, routes, adult_price, ki
             requestBody[key] = Number(requestBody[key]);
         }
         console.log(requestBody)
-        const jsonToSend = JSON.stringify(requestBody);
-        axios.post('http://127.0.0.1:8000/order', jsonToSend).then(response => {    
+        axios.post('http://127.0.0.1:8000/order', requestBody).then(response => {    
             
         }) .catch(function (error) {
             if (error.response) {

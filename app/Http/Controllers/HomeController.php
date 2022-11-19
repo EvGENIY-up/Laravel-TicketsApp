@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class HomeController extends Controller
 {
 
     /**
-     * Show the application dashboard.
+     * Get the events application.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
@@ -19,17 +21,25 @@ class HomeController extends Controller
         return view('home', compact('props'));
     }
 
-    public function store()
+    /**
+     * Store a new order and his tickets.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
-        $data = request()->validate([
-            'route_id' => 'integer|exists:route,id',
-            'additional_route_id' => 'integer|exists:route,id',
-            'group' => 'integer',
-            'preferential' => 'integer',
-            'ticket_adult_quanity' => 'required|integer|max:2',
-            'ticket_kid_quanity' => 'integer|max:2'
+
+        $request->validate([
+            'route_id' => 'required|integer|exists:routes,id',
+            'additional_route_id' => 'nullable|integer|exists:routes,id',
+            'ticket_adult_quanity' => 'required|integer|max_digits:20',
+            'ticket_kid_quanity' => 'nullable|integer|max_digits:20',
+            'group' => 'required|integer|max_digits:1',
+            'preferential' => 'required|integer|max_digits:1',
         ]);
 
-        dd($data);
+
+        $order = new Order();
     }
 }
