@@ -10,6 +10,9 @@ class Ticket extends Model
 {
     use HasFactory;
     use HasUuids;
+    protected $guarded = [];
+    protected $fillable = ['order_id', 'kid'];
+    public $timestamps = false;
 
 
     public function order()

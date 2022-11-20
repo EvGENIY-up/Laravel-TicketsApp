@@ -6,7 +6,7 @@ use App\Models\Order;
 use App\Models\Ticket;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class createOrderAction
+class CreateOrderAction
 {
 
     /**
@@ -34,7 +34,7 @@ class createOrderAction
      * @return Order
      */
 
-    public static function handle($order, $ticket_kid_quanity = 0, $ticket_adult_quanity)
+    public static function handle($order, $ticket_adult_quanity, $ticket_kid_quanity = 0)
     {
         $newOrder = new Order($order);
         $newOrder->save();

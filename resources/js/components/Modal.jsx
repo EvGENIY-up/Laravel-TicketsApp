@@ -36,6 +36,8 @@ function Modal({ id, setModalOpened, title, description, routes, adult_price, ki
     const filterSecondTimesByFirst = (event) => {
         const firstTime = new Date(event.target.value);
         setSecondTimes(secondTimes.filter((item) => new Date(item.time) > firstTime));
+        console.log(secondTimes);
+        console.log(firstTime);
     } 
 
     const handleSubmit = (event) => {
@@ -53,7 +55,7 @@ function Modal({ id, setModalOpened, title, description, routes, adult_price, ki
             alert('Максимальное кол-ва детских билетов равно 20')
             return;
         }
-        if (requestBody['route_id'] > requestBody['ticket_kid_quanity'] ) {
+        if (requestBody['route_id'] >= requestBody['additional_route_id'] ) {
             alert('Время отплытия не может быть больше времени прибытия')
             return;
         }
