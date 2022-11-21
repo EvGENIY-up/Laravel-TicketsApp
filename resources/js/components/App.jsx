@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import Ticket from './Ticket';
 
 function App(props) {
-    console.log(Object.values(props))
     return (
         <div className="App">
             <div className="wrapper">
@@ -23,7 +22,6 @@ export default App;
 if (document.getElementById('root')) {
     const element = document.getElementById('root')
     const props = element.getAttribute('props');
-    console.log(props);
     const decodeProps = JSON.parse(props)
     const root = ReactDOM.createRoot(element);
     root.render(<App {...decodeProps} />);

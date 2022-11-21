@@ -65,7 +65,7 @@ function Ticket({ id, title, description, adult_price, pier_price, routes, kid_p
               <button onClick={()=> setModalOpened(true)} className="more-button cu-p">Подробнее</button>
             </div>
           </div>
-        {modalOpened ? <Modal id={id} setModalOpened={setModalOpened} description={description}  title={title} adult_price={adult_price} kid_price={kid_price} routes={routes}  /> : null}
+        {modalOpened ? <Modal id={id} setModalOpened={setModalOpened} description={description}  title={title} adult_price={adult_price} kid_price={kid_price} pier_price={pier_price} routes={routes}  /> : null}
         </div>
     )
 }

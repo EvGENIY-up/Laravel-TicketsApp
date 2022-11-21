@@ -6,4 +6,5 @@ window.axios = axios;
 import './components/Example';
 import './components/App';
 import './components/Ticket';
-import '../css/app.css'
+import '../css/ticket.css'
+import '../css/modal.css'
